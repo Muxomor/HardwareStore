@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="HardwareStore.Components.ProductControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HardwareStore.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="450">
+    <Border Margin="10" BorderThickness="3" BorderBrush="Black">
+        
+    
+    <Grid >
+        <StackPanel Orientation="Vertical">
+            <Image Width="200" Source="\Resourses\placeholder.png" Name="MainImageImg"></Image>
+            <TextBlock Name="ProductNameTB"></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Name="RatingTB" ></TextBlock>
+                <TextBlock Name="ReviewsTB"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Image Width="30" Source="\Resourses\rating.png"></Image>
+                <TextBlock Name="PriceTB"></TextBlock>
+                <TextBlock TextDecorations="Strikethrough" Name="PriceWithoutDiscountTB"></TextBlock>
+            </StackPanel>
+            <StackPanel Margin="0 10" Orientation="Horizontal">
+                <Image  Width="100" Height="150" Source="\Resourses\addtocard.png"></Image>
+                <Image Margin="20 0" Width="100" Source="\Resourses\likeimg.png"></Image>
+                <Image Margin="20 0" Width="100" Source="\Resourses\trendsImg.png"></Image>
+            </StackPanel>
+        </StackPanel>
+        
+    </Grid>
+    </Border>
+</UserControl>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HardwareStore.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace HardwareStore
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new ProductPage());
         }
     }
 }

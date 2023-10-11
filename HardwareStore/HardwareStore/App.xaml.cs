@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HardwareStore.Components;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,6 @@ namespace HardwareStore
     /// </summary>
     public partial class App : Application
     {
+        public static HardwareStore322_shamaevEntities bd = new HardwareStore322_shamaevEntities();
     }
 }
