@@ -6,21 +6,26 @@
              xmlns:local="clr-namespace:HardwareStore.Components"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="450">
-    <Border Margin="10" BorderThickness="3" BorderBrush="Black">
+    <Border Margin="20 20" BorderThickness="3" BorderBrush="Black">
         
     
     <Grid >
         <StackPanel Orientation="Vertical">
-            <Image Width="200" Source="\Resourses\placeholder.png" Name="MainImageImg"></Image>
-            <TextBlock Name="ProductNameTB"></TextBlock>
+                <StackPanel>
+                    <Image Width="200" Source="\Resourses\placeholder.png" Name="MainImageImg"></Image>
+                    <TextBlock Visibility="{Binding CostVisibility}" Panel.ZIndex="1" Margin="320 0 0 0" Width="40" Height="20" Name="DiscountTB" Background="Aqua"></TextBlock>
+                </StackPanel>
+            
+            <TextBlock Name="ProductNameTB">Name</TextBlock>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Name="RatingTB" ></TextBlock>
-                <TextBlock Name="ReviewsTB"></TextBlock>
+                <Image Margin="0 0 0 0" Width="30" Source="\Resourses\rating.png"></Image>
+                <TextBlock Margin="0 10" Name="RatingTB" >Rating</TextBlock>
+                <TextBlock Margin="10 10" Name="ReviewsTB">Review</TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Image Width="30" Source="\Resourses\rating.png"></Image>
-                <TextBlock Name="PriceTB"></TextBlock>
-                <TextBlock TextDecorations="Strikethrough" Name="PriceWithoutDiscountTB"></TextBlock>
+                
+                <TextBlock Name="PriceTB">Price</TextBlock>
+                <TextBlock Visibility="{Binding CostVisibility}" Margin="10 0" TextDecorations="Strikethrough" Name="PriceWithoutDiscountTB">Discount</TextBlock>
             </StackPanel>
             <StackPanel Margin="0 10" Orientation="Horizontal">
                 <Image  Width="100" Height="150" Source="\Resourses\addtocard.png"></Image>

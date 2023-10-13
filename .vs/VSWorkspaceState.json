@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\HardwareStore",
+    "\\HardwareStore\\HardwareStore",
+    "\\HardwareStore\\HardwareStore\\Components"
   ],
-  "SelectedNode": "\\C:\\Users\\222127\\Source\\Repos\\HardwareStore",
+  "SelectedNode": "\\HardwareStore\\HardwareStore.sln",
   "PreviewInSolutionExplorer": false
 }
