@@ -5,35 +5,35 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HardwareStore.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="450">
+             d:DesignHeight="400" d:DesignWidth="450">
     <Border Margin="20 20" BorderThickness="3" BorderBrush="Black">
-        
-    
-    <Grid >
-        <StackPanel Orientation="Vertical">
+
+
+        <Grid Width="250" Height="350">
+            <StackPanel Orientation="Vertical">
                 <StackPanel>
                     <Image Width="200" Source="\Resourses\placeholder.png" Name="MainImageImg"></Image>
-                    <TextBlock Visibility="{Binding CostVisibility}" Panel.ZIndex="1" Margin="320 0 0 0" Width="40" Height="20" Name="DiscountTB" Background="Aqua"></TextBlock>
+                    <TextBlock Visibility="{Binding CostVisibility}" Panel.ZIndex="1" Margin="220 0 0 0" Width="40" Height="20" Name="DiscountTB" Background="Aqua"></TextBlock>
                 </StackPanel>
-            
-            <TextBlock Name="ProductNameTB">Name</TextBlock>
-            <StackPanel Orientation="Horizontal">
-                <Image Margin="0 0 0 0" Width="30" Source="\Resourses\rating.png"></Image>
-                <TextBlock Margin="0 10" Name="RatingTB" >Rating</TextBlock>
-                <TextBlock Margin="10 10" Name="ReviewsTB">Review</TextBlock>
+
+                <TextBlock Margin="10 -10" Name="ProductNameTB">Name</TextBlock>
+                <StackPanel Margin="10 15" Orientation="Horizontal">
+                    <Image Margin="0 0 0 0" Width="30" Source="\Resourses\rating.png"></Image>
+                    <TextBlock Margin="10 10" Name="RatingTB" >Rating</TextBlock>
+                    <TextBlock Margin="10 10" Name="ReviewsTB">Review</TextBlock>
+                </StackPanel>
+                <StackPanel Margin="10 15" Orientation="Horizontal">
+
+                    <TextBlock Name="PriceTB">Price</TextBlock>
+                    <TextBlock Visibility="{Binding CostVisibility}" Margin="10 0" TextDecorations="Strikethrough" Name="PriceWithoutDiscountTB">Discount</TextBlock>
+                </StackPanel>
+                <StackPanel Height="50" Margin="0 10" Orientation="Horizontal">
+                    <Image Margin="10 0" Width="50" Height="150" Source="\Resourses\addtocard.png"></Image>
+                    <Image Margin="20 0" Width="50" Source="\Resourses\likeimg.png"></Image>
+                    <Image Margin="-50 -10" Width="147" Source="\Resourses\trendsImg.png" Height="72"/>
+                </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                
-                <TextBlock Name="PriceTB">Price</TextBlock>
-                <TextBlock Visibility="{Binding CostVisibility}" Margin="10 0" TextDecorations="Strikethrough" Name="PriceWithoutDiscountTB">Discount</TextBlock>
-            </StackPanel>
-            <StackPanel Margin="0 10" Orientation="Horizontal">
-                <Image  Width="100" Height="150" Source="\Resourses\addtocard.png"></Image>
-                <Image Margin="20 0" Width="100" Source="\Resourses\likeimg.png"></Image>
-                <Image Margin="20 0" Width="100" Source="\Resourses\trendsImg.png"></Image>
-            </StackPanel>
-        </StackPanel>
-        
-    </Grid>
+
+        </Grid>
     </Border>
 </UserControl>

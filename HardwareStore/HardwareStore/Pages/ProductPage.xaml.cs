@@ -29,7 +29,7 @@ namespace HardwareStore.Pages
             
             foreach(var item in products)
             {
-                ProductsWP.Children.Add(new ProductControl(item.Title,item.Feedback.Select(x=>x.Evaluation).Average(),item.Feedback.Count, Convert.ToDouble(item.CostDiscount), Convert.ToDouble(item.Cost),item.CostVisibility, Convert.ToDouble(item.Discount)));
+                ProductsWP.Children.Add(new ProductControl(item.Title,item.Feedback.Select(x=>x.Evaluation).Average(),item.Feedback.Count, Convert.ToDouble(item.CostDiscount), Convert.ToDouble(item.Cost),item.CostVisibility,item.DiscoutPercent));
             }
             
         }

@@ -29,5 +29,12 @@ namespace HardwareStore.Components
                     return Visibility.Visible;
             }
         }
+        public string DiscoutPercent
+        {
+            get
+            {
+                if (Discount == 0) return null; else return ("-"+(Convert.ToDouble(Discount) * 100)+"%").ToString();
+            }
+        }
     }
 }

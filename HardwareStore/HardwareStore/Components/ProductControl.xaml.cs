@@ -20,16 +20,16 @@ namespace HardwareStore.Components
     /// </summary>
     public partial class ProductControl : UserControl
     {
-        public ProductControl(string productName,double rating,int reviewCount,double price, double priceWithoutDiscount, Visibility CostVisiblity,double discount)
+        public ProductControl(string productName,double rating,int reviewCount,double price, double priceWithoutDiscount, Visibility CostVisiblity,string discount)
         {
             InitializeComponent();
             ProductNameTB.Text = productName;
-            RatingTB.Text = rating.ToString();
+            RatingTB.Text = rating.ToString(".00");
             ReviewsTB.Text = reviewCount.ToString();
             PriceTB.Text=price.ToString();
-            PriceWithoutDiscountTB.Text = priceWithoutDiscount.ToString();
+            PriceWithoutDiscountTB.Text = priceWithoutDiscount.ToString("00");
             PriceWithoutDiscountTB.Visibility=CostVisiblity;
-            DiscountTB.Text = discount.ToString();
+            DiscountTB.Text = discount;
             DiscountTB.Visibility=CostVisiblity;
         }
     }
