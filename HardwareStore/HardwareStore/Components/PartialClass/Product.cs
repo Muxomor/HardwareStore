@@ -14,9 +14,33 @@ namespace HardwareStore.Components
             get
             {
                 if (Discount == 0)
-                    return Cost.ToString();
+                    return Cost.ToString("00");
                 else
                     return (Convert.ToDouble(Cost) - (Convert.ToDouble(Cost) * Discount)).ToString();
+            }
+        }
+        public decimal TotalCost
+        {
+            get
+            {
+                if (Discount != null)
+                    return (Cost - (Cost * (decimal)Discount));
+                else
+                    return Cost;
+            }
+        }
+        public int ReviewCount
+        {
+            get
+            {
+                return Feedback.Count;
+            }
+        }
+        public double ProductRating
+        {
+            get
+            {
+                return Feedback.Average(x=>x.Evaluation);
             }
         }
         public Visibility CostVisibility
@@ -29,6 +53,7 @@ namespace HardwareStore.Components
                     return Visibility.Visible;
             }
         }
+        
         public string DiscoutPercent
         {
             get

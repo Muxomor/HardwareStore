@@ -15,5 +15,6 @@ namespace HardwareStore
     public partial class App : Application
     {
         public static HardwareStore322_shamaevEntities bd = new HardwareStore322_shamaevEntities();
+        public static bool IsAdm = false;
     }
 }

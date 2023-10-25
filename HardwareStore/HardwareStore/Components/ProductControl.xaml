@@ -21,6 +21,9 @@
                     <Image Margin="0 0 0 0" Width="30" Source="\Resourses\rating.png"></Image>
                     <TextBlock Margin="10 10" Name="RatingTB" >Rating</TextBlock>
                     <TextBlock Margin="10 10" Name="ReviewsTB">Review</TextBlock>
+                    
+                    <Image Width="20" Source="/Resourses/reviewCount .png" />
+
                 </StackPanel>
                 <StackPanel Margin="10 15" Orientation="Horizontal">
 

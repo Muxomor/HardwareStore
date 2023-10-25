@@ -6,11 +6,42 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HardwareStore.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="1000"
+      d:DesignHeight="550" d:DesignWidth="1000"
       Title="ProductPage">
 
     <Grid>
-        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="80*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="440*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Width="1000" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Left" Grid.Column="1">
+            <StackPanel Orientation="Vertical">
+                <TextBlock>Сортировать по цене</TextBlock>
+                <ComboBox Name="CostSortCB" Width="100" SelectionChanged="CostSortCB_SelectionChanged">
+                    <ComboBoxItem>По умолчанию</ComboBoxItem>
+                    <ComboBoxItem>По убыванию</ComboBoxItem>
+                    <ComboBoxItem>По возрастанию</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Margin="10 0" Orientation="Vertical">
+                <TextBlock>Сортировать по отзывам</TextBlock>
+                <ComboBox Name="ReviewSortCB" Width="100" SelectionChanged="ReviewSortCB_SelectionChanged">
+                    <ComboBoxItem>По умолчанию</ComboBoxItem>
+                    <ComboBoxItem>По рейтингу</ComboBoxItem>
+                    <ComboBoxItem>По количеству отзывов</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Margin="10 0" Orientation="Vertical">
+                <TextBlock>Сортировать по названию</TextBlock>
+                <TextBox Name="SearchTB" Height="22" TextChanged="SearchTB_TextChanged"></TextBox>
+            </StackPanel>
+            
+            <Button Name="AddBTn" Visibility="Collapsed">Добавить товар</Button>
+        </StackPanel>
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden" Grid.Row="1" Grid.Column="1">
             <WrapPanel Name="ProductsWP">
                 <UserControl></UserControl>
             </WrapPanel>

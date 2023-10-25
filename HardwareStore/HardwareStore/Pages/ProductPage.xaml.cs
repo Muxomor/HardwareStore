@@ -27,11 +27,54 @@ namespace HardwareStore.Pages
             var products = App.bd.Product.ToList();
             var review = App.bd.Feedback.ToList();
             
-            foreach(var item in products)
-            {
-                ProductsWP.Children.Add(new ProductControl(item.Title,item.Feedback.Select(x=>x.Evaluation).Average(),item.Feedback.Count, Convert.ToDouble(item.CostDiscount), Convert.ToDouble(item.Cost),item.CostVisibility,item.DiscoutPercent));
-            }
+            Refresh();
             
         }
+        private void Refresh()
+        {
+            IEnumerable<Product> products = App.bd.Product;
+            if(CostSortCB.SelectedIndex!=0)
+            {
+                if (CostSortCB.SelectedIndex == 1)
+                    products = products.OrderBy(x => x.TotalCost);
+                else if (CostSortCB.SelectedIndex == 2)
+                    products = products.OrderByDescending(x => x.TotalCost);
+               
+            }
+            if(ReviewSortCB.SelectedIndex!=0)
+            {
+                if (ReviewSortCB.SelectedIndex == 1)
+                    products = products.OrderByDescending(x => x.ProductRating);
+                else if (ReviewSortCB.SelectedIndex == 2)
+                    products= products.OrderBy(x => x.ReviewCount);
+            }
+            if(SearchTB.Text!="")
+            {
+                products = products.Where(x => x.Title.ToLower().Contains(SearchTB.Text.ToLower()) || x.Description.Contains(SearchTB.Text.ToLower()));
+            }
+                ProductsWP.Children.Clear();
+                foreach (var item in products)
+                {
+                    ProductsWP.Children.Add(new ProductControl(item));
+                }
+            
+        }
+
+        private void CostSortCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Refresh();
+        }
+
+        private void ReviewSortCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Refresh();
+        }
+
+        private void SearchTB_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Refresh();
+        }
+
+        
     }
 }
