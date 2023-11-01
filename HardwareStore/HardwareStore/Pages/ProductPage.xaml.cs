@@ -39,14 +39,13 @@ namespace HardwareStore.Pages
                     products = products.OrderBy(x => x.TotalCost);
                 else if (CostSortCB.SelectedIndex == 2)
                     products = products.OrderByDescending(x => x.TotalCost);
-               
             }
             if(ReviewSortCB.SelectedIndex!=0)
             {
                 if (ReviewSortCB.SelectedIndex == 1)
                     products = products.OrderByDescending(x => x.ProductRating);
                 else if (ReviewSortCB.SelectedIndex == 2)
-                    products= products.OrderBy(x => x.ReviewCount);
+                    products= products.OrderByDescending(x => x.ReviewCount);
             }
             if(SearchTB.Text!="")
             {

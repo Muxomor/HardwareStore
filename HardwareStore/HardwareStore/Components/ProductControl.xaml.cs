@@ -23,6 +23,7 @@ namespace HardwareStore.Components
         Product product;
         public ProductControl(Product _product)
         {
+
             product = _product;
             InitializeComponent();
             ProductNameTB.Text = product.Title;
@@ -33,6 +34,20 @@ namespace HardwareStore.Components
             PriceWithoutDiscountTB.Visibility=product.CostVisibility;
             DiscountTB.Text = product.DiscoutPercent;
             DiscountTB.Visibility=product.CostVisibility;
+            if (App.IsAdm == false)
+            {
+
+RedactBtn.Visibility = Visibility.Hidden;
+            }
+            else if (App.IsAdm == true) {
+                RedactBtn.Visibility = Visibility.Visible;
+            }
+            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Navigation.NextPage(new PageComponents(new Pages.AddOrRedactPage(product)));
         }
     }
 }

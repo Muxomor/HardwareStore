@@ -15,12 +15,14 @@
             <RowDefinition Height="390*"/>
         </Grid.RowDefinitions>
         
-        <Frame Name="MainFrame" Grid.Row="1" Grid.Column="2" Margin="0,0,0,0" />
+        <Frame NavigationUIVisibility="Hidden" Name="MainFrame" Grid.Row="1" Grid.Column="2" Margin="0,0,0,0" />
         <StackPanel VerticalAlignment="Bottom" Grid.Row="1" >
             <Button Margin="0 30" Name="BackBTn" Click="BackBTn_Click">Назад</Button>
             <PasswordBox Name="passTB"></PasswordBox>
+            
             <Button Name="AdmBTN" Click="AdmBTN_Click">Админ</Button>
-            <Button Visibility="Collapsed" Name="AdmExitBtn">Выйти</Button>
+            
+            <Button Visibility="Collapsed" Name="AdmExitBtn" Click="AdmExitBtn_Click">Выйти</Button>
         </StackPanel>
         
         

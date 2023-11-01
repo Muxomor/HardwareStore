@@ -26,7 +26,8 @@ namespace HardwareStore
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new ProductPage());
+            Navigation.mainWindow = this;
+            Navigation.NextPage(new PageComponents(new ProductPage()));
 
 
         }
@@ -38,24 +39,33 @@ namespace HardwareStore
                 AdmExitBtn.Visibility = Visibility.Visible;
                 Navigation.ClearHistory();
                 Navigation.NextPage(new PageComponents(new ProductPage()));
-
             }
         }
 
         private void AdmExitBtn_Click(object sender, RoutedEventArgs e)
         {
             App.IsAdm = false;
-            {
                 AdmExitBtn.Visibility = Visibility.Collapsed;
                 Navigation.BackPage();
                 passTB.Password = "";
                 Navigation.ClearHistory();
-            }
         }
 
         private void BackBTn_Click(object sender, RoutedEventArgs e)
         {
             Navigation.BackPage();
         }
+
+
+        //private void AdmExitBtn_Click_1(object sender, RoutedEventArgs e)
+        //{
+        //    App.IsAdm = false;
+        //    {
+        //        AdmExitBtn.Visibility = Visibility.Collapsed;
+        //        Navigation.BackPage();
+        //        passTB.Password = "";
+        //        Navigation.ClearHistory();
+        //    }
+        //}
     }
 }

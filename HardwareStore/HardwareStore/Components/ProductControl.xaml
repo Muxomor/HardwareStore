@@ -29,6 +29,7 @@
 
                     <TextBlock Name="PriceTB">Price</TextBlock>
                     <TextBlock Visibility="{Binding CostVisibility}" Margin="10 0" TextDecorations="Strikethrough" Name="PriceWithoutDiscountTB">Discount</TextBlock>
+                    <Button Name="RedactBtn" Margin="50 0" Click="Button_Click">redact</Button>
                 </StackPanel>
                 <StackPanel Height="50" Margin="0 10" Orientation="Horizontal">
                     <Image Margin="10 0" Width="50" Height="150" Source="\Resourses\addtocard.png"></Image>

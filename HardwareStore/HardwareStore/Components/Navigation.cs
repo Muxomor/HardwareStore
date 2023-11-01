@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-using System.Net.NetworkInformation;
 using System.Windows.Media.Effects;
 using System.Xml.Serialization;
 
@@ -34,7 +34,7 @@ namespace HardwareStore.Components
         }
         public static void Update(PageComponents pageComponents)
         {
-            //mainWindow.BackBTn.Visibility = components.Count() > 1 ? System.Windows.Visibility.Visible : System.Windows.Visibility.Hidden;
+            mainWindow.BackBTn.Visibility = components.Count() > 1 ? System.Windows.Visibility.Visible : System.Windows.Visibility.Hidden;
             mainWindow.MainFrame.Navigate(pageComponents.Page);
         }
     }

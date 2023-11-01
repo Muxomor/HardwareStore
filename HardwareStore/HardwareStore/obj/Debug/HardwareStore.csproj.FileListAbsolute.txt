@@ -25,3 +25,5 @@ C:\Users\222127\source\repos\HardwareStore\HardwareStore\HardwareStore\obj\Debug
 C:\Users\222127\source\repos\HardwareStore\HardwareStore\HardwareStore\obj\Debug\HardwareStore.csproj.CopyComplete
 C:\Users\222127\source\repos\HardwareStore\HardwareStore\HardwareStore\obj\Debug\HardwareStore.exe
 C:\Users\222127\source\repos\HardwareStore\HardwareStore\HardwareStore\obj\Debug\HardwareStore.pdb
+C:\Users\222127\source\repos\HardwareStore\HardwareStore\HardwareStore\obj\Debug\Pages\AddOrRedactPage.g.cs
+C:\Users\222127\source\repos\HardwareStore\HardwareStore\HardwareStore\obj\Debug\Pages\AddOrRedactPage.baml
