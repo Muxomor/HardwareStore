@@ -11,13 +11,14 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="80*"/>
+            <RowDefinition Height="61*"/>
+            <RowDefinition Height="458*"/>
+            <RowDefinition Height="31*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="440*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Width="1000" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Left" Grid.Column="1">
+        <StackPanel Width="1000" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Center">
             <StackPanel Orientation="Vertical">
                 <TextBlock>Сортировать по цене</TextBlock>
                 <ComboBox Name="CostSortCB" Width="100" SelectionChanged="CostSortCB_SelectionChanged">
@@ -38,13 +39,27 @@
                 <TextBlock>Сортировать по названию</TextBlock>
                 <TextBox Name="SearchTB" Height="22" TextChanged="SearchTB_TextChanged"></TextBox>
             </StackPanel>
-            
+            <StackPanel Margin="10 0" Orientation="Vertical">
+                <TextBlock>Сортировка по размеру скидки</TextBlock>
+                <ComboBox Name="SaleAmountCB" SelectionChanged="SaleAmountCB_SelectionChanged">
+                    <ComboBoxItem>По умолчанию</ComboBoxItem>
+                    <ComboBoxItem>от 0 до 5%</ComboBoxItem>
+                    <ComboBoxItem>от 5% до 15%</ComboBoxItem>
+                    <ComboBoxItem>от 15% до 30%</ComboBoxItem>
+                    <ComboBoxItem>от 30% до 70%</ComboBoxItem>
+                    <ComboBoxItem>от 70% до 100%</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
             <Button Name="AddBTn" Visibility="Collapsed">Добавить товар</Button>
         </StackPanel>
-        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden" Grid.Row="1" Grid.Column="1">
+        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden" Margin="0,61,0,0">
             <WrapPanel Name="ProductsWP">
                 <UserControl></UserControl>
             </WrapPanel>
         </ScrollViewer>
+        <StackPanel Grid.Row="2">
+            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Name="DataCountTB"></TextBlock>
+        </StackPanel>
     </Grid>
 </Page>

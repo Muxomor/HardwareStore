@@ -29,10 +29,14 @@
 
                     <TextBlock Name="PriceTB">Price</TextBlock>
                     <TextBlock Visibility="{Binding CostVisibility}" Margin="10 0" TextDecorations="Strikethrough" Name="PriceWithoutDiscountTB">Discount</TextBlock>
-                    <Button Name="RedactBtn" Margin="50 0" Click="Button_Click">redact</Button>
+                    <Button Name="RedactBtn" Margin="10 0" Click="Button_Click">redact</Button>
+                    <Button  Name="DeleteBtn" Click="DeleteBtn_Click">delete</Button>
                 </StackPanel>
                 <StackPanel Height="50" Margin="0 10" Orientation="Horizontal">
-                    <Image Margin="10 0" Width="50" Height="150" Source="\Resourses\addtocard.png"></Image>
+                    <Button BorderBrush="White" Background="White" Foreground="White" Click="Button_Click_1">
+                        <Image Margin="10 0" Width="50" Height="150" Source="\Resourses\addtocard.png"></Image>
+                    </Button>
+                    
                     <Image Margin="20 0" Width="50" Source="\Resourses\likeimg.png"></Image>
                     <Image Margin="-50 -10" Width="147" Source="\Resourses\trendsImg.png" Height="72"/>
                 </StackPanel>

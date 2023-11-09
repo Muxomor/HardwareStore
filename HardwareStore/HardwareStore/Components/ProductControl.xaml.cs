@@ -36,11 +36,12 @@ namespace HardwareStore.Components
             DiscountTB.Visibility=product.CostVisibility;
             if (App.IsAdm == false)
             {
-
-RedactBtn.Visibility = Visibility.Hidden;
+                RedactBtn.Visibility = Visibility.Hidden;
+                DeleteBtn.Visibility = Visibility.Hidden;
             }
             else if (App.IsAdm == true) {
                 RedactBtn.Visibility = Visibility.Visible;
+                DeleteBtn.Visibility = Visibility.Visible;
             }
             
         }
@@ -48,6 +49,22 @@ RedactBtn.Visibility = Visibility.Hidden;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Navigation.NextPage(new PageComponents(new Pages.AddOrRedactPage(product)));
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Navigation.NextPage(new PageComponents(new Pages.AddOrRedactPage(product)));
+        }
+
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (product.Feedback != null)
+                MessageBox.Show("Удаление запрещено");
+            else
+            {
+                App.bd.Product.Remove(product);
+                App.bd.SaveChanges();
+            }
         }
     }
 }

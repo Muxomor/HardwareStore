@@ -51,12 +51,26 @@ namespace HardwareStore.Pages
             {
                 products = products.Where(x => x.Title.ToLower().Contains(SearchTB.Text.ToLower()) || x.Description.Contains(SearchTB.Text.ToLower()));
             }
+            if(SaleAmountCB.SelectedIndex!=0)
+            {
+                if (SaleAmountCB.SelectedIndex == 1)
+                    products = products.Where(x => x.Discount >= 0 && x.Discount <= 0.05);
+                else if (SaleAmountCB.SelectedIndex == 2)
+                    products = products.Where(x => x.Discount >= 0.05 && x.Discount <= 0.015);
+                else if (SaleAmountCB.SelectedIndex == 3)
+                    products = products.Where(x => x.Discount >= 0.15 && x.Discount <= 0.30);
+                else if (SaleAmountCB.SelectedIndex == 4)
+                    products = products.Where(x => x.Discount >= 0.30 && x.Discount <= 0.70);
+                else if (SaleAmountCB.SelectedIndex == 5)
+                    products = products.Where(x => x.Discount >= 0.70 && x.Discount <= 0.100);
+            }
+
                 ProductsWP.Children.Clear();
                 foreach (var item in products)
                 {
                     ProductsWP.Children.Add(new ProductControl(item));
                 }
-            
+            DataCountTB.Text = products.Count() + " из " + App.bd.Product.Count();
         }
 
         private void CostSortCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -74,6 +88,9 @@ namespace HardwareStore.Pages
             Refresh();
         }
 
-        
+        private void SaleAmountCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Refresh();
+        }
     }
 }
