@@ -92,5 +92,10 @@ namespace HardwareStore.Pages
         {
             Refresh();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

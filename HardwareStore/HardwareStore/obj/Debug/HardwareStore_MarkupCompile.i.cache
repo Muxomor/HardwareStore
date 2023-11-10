@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\222127\source\repos\HardwareStore\HardwareStore\HardwareStore\App.xaml
-5440566823
+574600744
 2-1407320939
-21-2071879820
+21-600788421
 181306427309
-Components\ProductControl.xaml;Components\ProductPhotoControl.xaml;MainWindow.xaml;Pages\AddOrRedactPage.xaml;Pages\ProductPage.xaml;
+Components\CardProductsControl.xaml;Components\ProductControl.xaml;MainWindow.xaml;Pages\AddOrRedactPage.xaml;Pages\ProductPage.xaml;
 
 True
 

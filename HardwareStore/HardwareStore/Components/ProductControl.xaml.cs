@@ -21,6 +21,7 @@ namespace HardwareStore.Components
     public partial class ProductControl : UserControl
     {
         Product product;
+        Order order;
         public ProductControl(Product _product)
         {
 
@@ -34,6 +35,7 @@ namespace HardwareStore.Components
             PriceWithoutDiscountTB.Visibility=product.CostVisibility;
             DiscountTB.Text = product.DiscoutPercent;
             DiscountTB.Visibility=product.CostVisibility;
+            this.DataContext=product;   
             if (App.IsAdm == false)
             {
                 RedactBtn.Visibility = Visibility.Hidden;
@@ -53,7 +55,12 @@ namespace HardwareStore.Components
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Navigation.NextPage(new PageComponents(new Pages.AddOrRedactPage(product)));
+            App.bd.Sostav.Add(new Sostav
+            {
+                Product_id = product.Id,
+                product_qnt = 1
+            }) ;
+            App.bd.SaveChanges();
         }
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)

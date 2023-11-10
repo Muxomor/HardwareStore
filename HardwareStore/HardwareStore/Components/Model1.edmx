@@ -99,6 +99,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Sostav_Order1">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="Sostav" Type="Self.Sostav" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Sostav">
+              <PropertyRef Name="Order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Sostav_Product">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="Sostav" Type="Self.Sostav" Multiplicity="*" />
@@ -127,6 +139,10 @@
             <End Role="ProductPhotos" EntitySet="ProductPhotos" />
           </AssociationSet>
           <AssociationSet Name="FK_Sostav_Order" Association="Self.FK_Sostav_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Sostav" EntitySet="Sostav" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sostav_Order1" Association="Self.FK_Sostav_Order1">
             <End Role="Order" EntitySet="Order" />
             <End Role="Sostav" EntitySet="Sostav" />
           </AssociationSet>

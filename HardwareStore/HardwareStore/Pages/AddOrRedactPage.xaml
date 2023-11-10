@@ -9,7 +9,7 @@
       Title="AddOrRedactPage">
 
     <Grid>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Width="60">id</TextBlock>
                 <TextBox IsEnabled="False" Text="{Binding Id}" Width="150"></TextBox>

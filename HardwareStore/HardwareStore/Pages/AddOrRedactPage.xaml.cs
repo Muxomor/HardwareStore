@@ -29,6 +29,7 @@ namespace HardwareStore.Pages
             InitializeComponent();
             product = _product;
             this.DataContext = product;
+            //RefreshPhoto();
         }
 
         private void ChangeImgBtn_Click(object sender, RoutedEventArgs e)
@@ -81,6 +82,20 @@ namespace HardwareStore.Pages
 
             Navigation.BackPage();
         }
+       //public void RefreshPhoto()
+       //{
+       //    PhotoWp.Children.Clear();
+       //    foreach (var item in product.ProductPhotos)
+       //    {
+       //        PhotoWp.Children.Add(new ProductPhotoControl(item));
+       //    }
+       //    BitmapImage bitmapStream = new BitmapImage();
+       //    MemoryStream byteStream = new MemoryStream(product.MainImage);
+       //    bitmapStream.BeginInit();
+       //    bitmapStream.StreamSource = byteStream;
+       //    bitmapStream.EndInit();
+       //    ProductImg.Source = bitmapStream;
+       //}
 
+        }
     }
-}

@@ -12,7 +12,7 @@
         <Grid Width="250" Height="350">
             <StackPanel Orientation="Vertical">
                 <StackPanel>
-                    <Image Width="200" Source="\Resourses\placeholder.png" Name="MainImageImg"></Image>
+                    <Image Height="150" Width="150" Source="{Binding MainImage}" Name="MainImageImg"></Image>
                     <TextBlock Visibility="{Binding CostVisibility}" Panel.ZIndex="1" Margin="220 0 0 0" Width="40" Height="20" Name="DiscountTB" Background="Aqua"></TextBlock>
                 </StackPanel>
 
