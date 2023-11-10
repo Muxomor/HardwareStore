@@ -28,5 +28,8 @@ namespace HardwareStore.Components
         public virtual DbSet<Feedback> Feedback { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<ProductPhotos> ProductPhotos { get; set; }
+        public virtual DbSet<Sostav> Sostav { get; set; }
     }
 }

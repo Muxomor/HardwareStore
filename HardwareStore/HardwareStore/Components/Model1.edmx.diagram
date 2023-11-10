@@ -9,6 +9,12 @@
         <EntityTypeShape EntityType="HardwareStore322_shamaevModel.Product" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="HardwareStore322_shamaevModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="HardwareStore322_shamaevModel.FK_Feedback_Product" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HardwareStore322_shamaevModel.Order" Width="1.5" PointX="3.75" PointY="7.5" />
+        <EntityTypeShape EntityType="HardwareStore322_shamaevModel.ProductPhotos" Width="1.5" PointX="3" PointY="4.5" />
+        <EntityTypeShape EntityType="HardwareStore322_shamaevModel.Sostav" Width="1.5" PointX="6" PointY="1.375" />
+        <AssociationConnector Association="HardwareStore322_shamaevModel.FK_Sostav_Order" />
+        <AssociationConnector Association="HardwareStore322_shamaevModel.FK_ProductPhotos_Product" />
+        <AssociationConnector Association="HardwareStore322_shamaevModel.FK_Sostav_Product" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

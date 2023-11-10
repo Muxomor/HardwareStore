@@ -23,6 +23,8 @@
     <Property Name="MainImage" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="ImagePath" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Feedback" Relationship="Self.FK_Feedback_Product" FromRole="Product" ToRole="Feedback" />
+    <NavigationProperty Name="ProductPhotos" Relationship="HardwareStore322_shamaevModel.FK_ProductPhotos_Product" FromRole="Product" ToRole="ProductPhotos" />
+    <NavigationProperty Name="Sostav" Relationship="HardwareStore322_shamaevModel.FK_Sostav_Product" FromRole="Product" ToRole="Sostav" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -54,5 +56,86 @@
       <End Role="Product" EntitySet="Product" />
       <End Role="Feedback" EntitySet="Feedback" />
     </AssociationSet>
+    <EntitySet Name="Order" EntityType="HardwareStore322_shamaevModel.Order" />
+    <EntitySet Name="ProductPhotos" EntityType="HardwareStore322_shamaevModel.ProductPhotos" />
+    <EntitySet Name="Sostav" EntityType="HardwareStore322_shamaevModel.Sostav" />
+    <AssociationSet Name="FK_Sostav_Order" Association="HardwareStore322_shamaevModel.FK_Sostav_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="Sostav" EntitySet="Sostav" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductPhotos_Product" Association="HardwareStore322_shamaevModel.FK_ProductPhotos_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductPhotos" EntitySet="ProductPhotos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sostav_Product" Association="HardwareStore322_shamaevModel.FK_Sostav_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Sostav" EntitySet="Sostav" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="date" Type="DateTime" Precision="0" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TotalCost" Type="Int32" />
+    <NavigationProperty Name="Sostav" Relationship="HardwareStore322_shamaevModel.FK_Sostav_Order" FromRole="Order" ToRole="Sostav" />
+  </EntityType>
+  <EntityType Name="ProductPhotos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="Product_id" Type="Int32" />
+    <Property Name="PhotoByte" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Product" Relationship="HardwareStore322_shamaevModel.FK_ProductPhotos_Product" FromRole="ProductPhotos" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Sostav">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="Order_id" Type="Int32" />
+    <Property Name="Product_id" Type="Int32" />
+    <Property Name="product_qnt" Type="Int32" />
+    <NavigationProperty Name="Order" Relationship="HardwareStore322_shamaevModel.FK_Sostav_Order" FromRole="Sostav" ToRole="Order" />
+    <NavigationProperty Name="Product" Relationship="HardwareStore322_shamaevModel.FK_Sostav_Product" FromRole="Sostav" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK_Sostav_Order">
+    <End Type="HardwareStore322_shamaevModel.Order" Role="Order" Multiplicity="0..1" />
+    <End Type="HardwareStore322_shamaevModel.Sostav" Role="Sostav" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Sostav">
+        <PropertyRef Name="Order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductPhotos_Product">
+    <End Type="HardwareStore322_shamaevModel.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="HardwareStore322_shamaevModel.ProductPhotos" Role="ProductPhotos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductPhotos">
+        <PropertyRef Name="Product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sostav_Product">
+    <End Type="HardwareStore322_shamaevModel.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="HardwareStore322_shamaevModel.Sostav" Role="Sostav" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sostav">
+        <PropertyRef Name="Product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

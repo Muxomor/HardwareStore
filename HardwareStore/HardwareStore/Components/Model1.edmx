@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище HardwareStore322_shamaevModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище HardwareStore322_shamaevModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Feedback">
           <Key>
             <PropertyRef Name="Id" />
@@ -14,6 +14,15 @@
           <Property Name="Evaluation" Type="int" Nullable="false" />
           <Property Name="Pros" Type="nvarchar" MaxLength="100" />
           <Property Name="Cons" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="date" Type="date" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" />
+          <Property Name="TotalCost" Type="int" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -26,6 +35,23 @@
           <Property Name="Discount" Type="float" />
           <Property Name="MainImage" Type="varbinary(max)" />
           <Property Name="ImagePath" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProductPhotos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Product_id" Type="int" />
+          <Property Name="PhotoByte" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Sostav">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Order_id" Type="int" />
+          <Property Name="Product_id" Type="int" />
+          <Property Name="product_qnt" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -49,17 +75,67 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ProductPhotos_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductPhotos" Type="Self.ProductPhotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductPhotos">
+              <PropertyRef Name="Product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sostav_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="Sostav" Type="Self.Sostav" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Sostav">
+              <PropertyRef Name="Order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sostav_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Sostav" Type="Self.Sostav" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sostav">
+              <PropertyRef Name="Product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище HardwareStore322_shamaevModelContainer">
           <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductPhotos" EntityType="Self.ProductPhotos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sostav" EntityType="Self.Sostav" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Feedback_Product" Association="Self.FK_Feedback_Product">
             <End Role="Product" EntitySet="Product" />
             <End Role="Feedback" EntitySet="Feedback" />
           </AssociationSet>
+          <AssociationSet Name="FK_ProductPhotos_Product" Association="Self.FK_ProductPhotos_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductPhotos" EntitySet="ProductPhotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sostav_Order" Association="Self.FK_Sostav_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Sostav" EntitySet="Sostav" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sostav_Product" Association="Self.FK_Sostav_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Sostav" EntitySet="Sostav" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HardwareStore322_shamaevModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -86,6 +162,8 @@
           <Property Name="MainImage" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ImagePath" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Feedback" Relationship="Self.FK_Feedback_Product" FromRole="Product" ToRole="Feedback" />
+          <NavigationProperty Name="ProductPhotos" Relationship="HardwareStore322_shamaevModel.FK_ProductPhotos_Product" FromRole="Product" ToRole="ProductPhotos" />
+          <NavigationProperty Name="Sostav" Relationship="HardwareStore322_shamaevModel.FK_Sostav_Product" FromRole="Product" ToRole="Sostav" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -117,7 +195,88 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="Feedback" EntitySet="Feedback" />
           </AssociationSet>
+          <EntitySet Name="Order" EntityType="HardwareStore322_shamaevModel.Order" />
+          <EntitySet Name="ProductPhotos" EntityType="HardwareStore322_shamaevModel.ProductPhotos" />
+          <EntitySet Name="Sostav" EntityType="HardwareStore322_shamaevModel.Sostav" />
+          <AssociationSet Name="FK_Sostav_Order" Association="HardwareStore322_shamaevModel.FK_Sostav_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Sostav" EntitySet="Sostav" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductPhotos_Product" Association="HardwareStore322_shamaevModel.FK_ProductPhotos_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductPhotos" EntitySet="ProductPhotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sostav_Product" Association="HardwareStore322_shamaevModel.FK_Sostav_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Sostav" EntitySet="Sostav" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TotalCost" Type="Int32" />
+          <NavigationProperty Name="Sostav" Relationship="HardwareStore322_shamaevModel.FK_Sostav_Order" FromRole="Order" ToRole="Sostav" />
+        </EntityType>
+        <EntityType Name="ProductPhotos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Product_id" Type="Int32" />
+          <Property Name="PhotoByte" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Product" Relationship="HardwareStore322_shamaevModel.FK_ProductPhotos_Product" FromRole="ProductPhotos" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Sostav">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Order_id" Type="Int32" />
+          <Property Name="Product_id" Type="Int32" />
+          <Property Name="product_qnt" Type="Int32" />
+          <NavigationProperty Name="Order" Relationship="HardwareStore322_shamaevModel.FK_Sostav_Order" FromRole="Sostav" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="HardwareStore322_shamaevModel.FK_Sostav_Product" FromRole="Sostav" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_Sostav_Order">
+          <End Type="HardwareStore322_shamaevModel.Order" Role="Order" Multiplicity="0..1" />
+          <End Type="HardwareStore322_shamaevModel.Sostav" Role="Sostav" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Sostav">
+              <PropertyRef Name="Order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductPhotos_Product">
+          <End Type="HardwareStore322_shamaevModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="HardwareStore322_shamaevModel.ProductPhotos" Role="ProductPhotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductPhotos">
+              <PropertyRef Name="Product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sostav_Product">
+          <End Type="HardwareStore322_shamaevModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="HardwareStore322_shamaevModel.Sostav" Role="Sostav" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sostav">
+              <PropertyRef Name="Product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -156,6 +315,35 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="HardwareStore322_shamaevModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductPhotos">
+            <EntityTypeMapping TypeName="HardwareStore322_shamaevModel.ProductPhotos">
+              <MappingFragment StoreEntitySet="ProductPhotos">
+                <ScalarProperty Name="PhotoByte" ColumnName="PhotoByte" />
+                <ScalarProperty Name="Product_id" ColumnName="Product_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sostav">
+            <EntityTypeMapping TypeName="HardwareStore322_shamaevModel.Sostav">
+              <MappingFragment StoreEntitySet="Sostav">
+                <ScalarProperty Name="product_qnt" ColumnName="product_qnt" />
+                <ScalarProperty Name="Product_id" ColumnName="Product_id" />
+                <ScalarProperty Name="Order_id" ColumnName="Order_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

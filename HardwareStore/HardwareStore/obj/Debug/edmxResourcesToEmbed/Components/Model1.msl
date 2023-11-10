@@ -36,5 +36,34 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Order">
+      <EntityTypeMapping TypeName="HardwareStore322_shamaevModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductPhotos">
+      <EntityTypeMapping TypeName="HardwareStore322_shamaevModel.ProductPhotos">
+        <MappingFragment StoreEntitySet="ProductPhotos">
+          <ScalarProperty Name="PhotoByte" ColumnName="PhotoByte" />
+          <ScalarProperty Name="Product_id" ColumnName="Product_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sostav">
+      <EntityTypeMapping TypeName="HardwareStore322_shamaevModel.Sostav">
+        <MappingFragment StoreEntitySet="Sostav">
+          <ScalarProperty Name="product_qnt" ColumnName="product_qnt" />
+          <ScalarProperty Name="Product_id" ColumnName="Product_id" />
+          <ScalarProperty Name="Order_id" ColumnName="Order_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

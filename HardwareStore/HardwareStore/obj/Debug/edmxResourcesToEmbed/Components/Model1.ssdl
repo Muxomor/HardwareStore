@@ -10,6 +10,15 @@
     <Property Name="Pros" Type="nvarchar" MaxLength="100" />
     <Property Name="Cons" Type="nvarchar" MaxLength="100" />
   </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="date" Type="date" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+    <Property Name="TotalCost" Type="int" />
+  </EntityType>
   <EntityType Name="Product">
     <Key>
       <PropertyRef Name="Id" />
@@ -21,6 +30,23 @@
     <Property Name="Discount" Type="float" />
     <Property Name="MainImage" Type="varbinary(max)" />
     <Property Name="ImagePath" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ProductPhotos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="Product_id" Type="int" />
+    <Property Name="PhotoByte" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Sostav">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="Order_id" Type="int" />
+    <Property Name="Product_id" Type="int" />
+    <Property Name="product_qnt" Type="int" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -44,13 +70,64 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ProductPhotos_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="ProductPhotos" Type="Self.ProductPhotos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductPhotos">
+        <PropertyRef Name="Product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sostav_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+    <End Role="Sostav" Type="Self.Sostav" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Sostav">
+        <PropertyRef Name="Order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sostav_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Sostav" Type="Self.Sostav" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sostav">
+        <PropertyRef Name="Product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="Хранилище HardwareStore322_shamaevModelContainer">
     <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductPhotos" EntityType="Self.ProductPhotos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sostav" EntityType="Self.Sostav" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Feedback_Product" Association="Self.FK_Feedback_Product">
       <End Role="Product" EntitySet="Product" />
       <End Role="Feedback" EntitySet="Feedback" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductPhotos_Product" Association="Self.FK_ProductPhotos_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductPhotos" EntitySet="ProductPhotos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sostav_Order" Association="Self.FK_Sostav_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="Sostav" EntitySet="Sostav" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sostav_Product" Association="Self.FK_Sostav_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Sostav" EntitySet="Sostav" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

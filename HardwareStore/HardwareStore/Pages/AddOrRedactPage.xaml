@@ -12,26 +12,26 @@
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Width="60">id</TextBlock>
-                <TextBox Text="{Binding Id}" Width="150"></TextBox>
+                <TextBox IsEnabled="False" Text="{Binding Id}" Width="150"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Width="60">Title</TextBlock>
+                <TextBlock x:Name="TitleTB" Width="60">Title</TextBlock>
                 <TextBox Text="{Binding Title}" Width="150"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Width="60">Description</TextBlock>
+                <TextBlock Name="DescriptionTB" Width="60">Description</TextBlock>
                 <TextBox Text="{Binding Description}" Width="150"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Width="60">Cost</TextBlock>
+                <TextBlock Name="CostTB" Width="60">Cost</TextBlock>
                 <TextBox Text="{Binding Cost}" Width="150"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Width="60">Discount</TextBlock>
-                <TextBox Text="{Binding Discount}" Width="150"></TextBox>
+                <TextBlock Name="DiscountTB" Width="60">Discount</TextBlock>
+                <TextBox  Text="{Binding Discount}" Width="150"></TextBox>
             </StackPanel>
             <StackPanel Margin="0 30 0  0">
-                <Image Width="200" Height="200"></Image>
+                <Image x:Name="ProductImg" Source="{Binding MainImage}" Width="200" Height="200"></Image>
                 <Button Name="ChangeImgBtn" Click="ChangeImgBtn_Click">Change Image</Button>
                 <Button Name="SaveChangesBtn" Click="SaveChangesBtn_Click">Save changes</Button>
             </StackPanel>
