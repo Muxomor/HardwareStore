@@ -5,27 +5,29 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HardwareStore.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="150" d:DesignWidth="400">
+             d:DesignHeight="150" d:DesignWidth="150">
     <Grid>
-        <StackPanel Orientation="Horizontal">
-            <Image Width="130" Height="130" Source="{Binding MainImage}"></Image>
-            <TextBlock Margin="5 -50 0 0" Height="20" VerticalAlignment="Center" Text="{Binding Title}">Название</TextBlock>
-            <TextBlock  Height="20" Margin="-52 33 0 0" Text="{Binding TotalCost}">Цена</TextBlock>
-            <StackPanel Margin="140 0 0 0" Height="50" Orientation="Vertical">
-                <TextBlock>Количество</TextBlock>
-                <StackPanel Orientation="Horizontal">
-                    <Button Width="15">-</Button>
-                    <TextBox Text="{Binding product_qnt}" Width="30"></TextBox>
-                    <Button Width="15">+</Button>
+
+        <Border BorderBrush="Black" BorderThickness="1" Margin="5">
+            <StackPanel>
+                <TextBlock TextAlignment="Center">Название:</TextBlock>
+                <TextBlock TextAlignment="Center" Text="{Binding Title}"></TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                    <TextBlock>Цена</TextBlock>
+                    <TextBlock x:Name="CostTb" Text="{Binding TotalCost}" TextAlignment="Center" Margin="40 0 0 0" Width="80"></TextBlock>
                 </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                    <TextBlock >Количество</TextBlock>
+                    <TextBox x:Name="KolvoTb" TextAlignment="Center" Margin="5 0 0 0" Width="80" TextChanged="KolvoTb_TextChanged" PreviewTextInput="KolvoTb_PreviewTextInput"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                    <TextBlock>Сумма</TextBlock>
+                    <TextBlock x:Name="SummTb" TextAlignment="Center" Margin="33 0 0 0" Width="80"></TextBlock>
+                </StackPanel>
+                <Button Margin="0 5" Width="30" x:Name="DeleteBtn" Click="DeleteBtn_Click">
+                    <Image Source="\Resourses\trashbox.png" Margin="1"/>
+                </Button>
             </StackPanel>
-            <StackPanel Margin="-90 100 0 0 " Height="40">
-                <TextBlock>Итоговая цена</TextBlock>
-                <TextBlock Margin="0 5" Name="TotalCostTB"></TextBlock>
-            </StackPanel>
-        </StackPanel>
-        <StackPanel Margin="135 120 0 0" Height="20" Orientation="Horizontal">
-            <Button>Удалить из корзины</Button>
-        </StackPanel>
+        </Border>
     </Grid>
 </UserControl>

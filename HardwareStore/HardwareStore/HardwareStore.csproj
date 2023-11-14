@@ -185,6 +185,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resourses\plus.png" />
+    <Resource Include="Resourses\minus.jpg" />
+    <Resource Include="Resourses\trashbox.png" />
     <Resource Include="Resourses\reviewCount .png" />
     <Resource Include="Resourses\rating.png" />
     <Resource Include="Resourses\addtocard.png" />

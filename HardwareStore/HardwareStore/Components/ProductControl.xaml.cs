@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HardwareStore.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,6 @@ namespace HardwareStore.Components
     public partial class ProductControl : UserControl
     {
         Product product;
-        Order order;
         public ProductControl(Product _product)
         {
 
@@ -55,12 +55,9 @@ namespace HardwareStore.Components
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            App.bd.Sostav.Add(new Sostav
-            {
-                Product_id = product.Id,
-                product_qnt = 1
-            }) ;
-            App.bd.SaveChanges();
+            App.CardWp.Children.Add(new CardProductsControl(product));
+            
+
         }
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)

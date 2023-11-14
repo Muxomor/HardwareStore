@@ -14,10 +14,10 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="date" Type="date" />
     <Property Name="status" Type="nvarchar" MaxLength="50" />
-    <Property Name="TotalCost" Type="int" />
+    <Property Name="TotalCost" Type="float" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -43,7 +43,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Order_id" Type="int" />
     <Property Name="Product_id" Type="int" />
     <Property Name="product_qnt" Type="int" />

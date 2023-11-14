@@ -20,11 +20,43 @@ namespace HardwareStore.Components
     /// </summary>
     public partial class CardProductsControl : UserControl
     {
-        Product product;
+        public Product product;
+        public int Kolvo;
+        public double summ;
+
         public CardProductsControl(Product _product)
         {
             InitializeComponent();
             this.DataContext = _product;
+            product = _product;
+            CostTb.Text = product.TotalCost.ToString();
+            _product.Id = product.Id; 
+            Kolvo = 1;
+            KolvoTb.Text = Kolvo.ToString();
+            
+        }
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            App.CardWp.Children.Remove(this);
+        }
+
+        private void KolvoTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (int.TryParse(KolvoTb.Text, out Kolvo)&& Kolvo!=0)
+            {
+                summ =Kolvo * Convert.ToDouble(CostTb.Text);
+                SummTb.Text = summ.ToString();
+            }
+            else
+            {
+                SummTb.Text = "";
+            }
+        }
+
+        private void KolvoTb_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!char.IsDigit(e.Text[0]))
+                e.Handled = true;
         }
     }
 }

@@ -53,21 +53,26 @@
 
             <Button Name="AddBTn" Visibility="Collapsed">Добавить товар</Button>
         </StackPanel>
-        <ScrollViewer Width="690" Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Left">
-            <WrapPanel Name="ProductsWP">
+        <ScrollViewer Width="599" Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Left">
+            <WrapPanel Width="500" Name="ProductsWP">
                 <UserControl></UserControl>
             </WrapPanel>
         </ScrollViewer>
         <StackPanel Grid.Row="2">
             <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Name="DataCountTB"></TextBlock>
         </StackPanel>
-        <ScrollViewer Height="455" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" Grid.Row="1" Width="200" HorizontalAlignment="Right">
-            <StackPanel>
-                <TextBlock HorizontalAlignment="Center">Корзина</TextBlock>
-                <WrapPanel Name="CardWP"></WrapPanel>
-                <Button Name="CreateOrderBtn" Margin="0 420 0 0 " Click="Button_Click">Оформить заказ</Button>
-            </StackPanel>
-            
+
+        <ScrollViewer  Height="350" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" Grid.Row="1" Width="200" HorizontalAlignment="Right">
+            <Border BorderBrush="Black" BorderThickness="2">
+                <StackPanel>
+                    <TextBlock Name="TotalCostTB"></TextBlock><TextBlock HorizontalAlignment="Center">Корзина</TextBlock>
+                    
+                    <WrapPanel Name="CardWP"></WrapPanel>
+                    
+                    <Button Name="OrderConfirmationBtn" Margin="0 290 0 0 " Click="OrderConfirmation_Click">Оформить заказ</Button>
+                </StackPanel>
+            </Border>
         </ScrollViewer>
+
     </Grid>
 </Page>

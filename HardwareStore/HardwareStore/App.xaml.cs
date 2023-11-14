@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace HardwareStore
 {
@@ -16,5 +17,6 @@ namespace HardwareStore
     {
         public static HardwareStore322_shamaevEntities bd = new HardwareStore322_shamaevEntities();
         public static bool IsAdm = false;
+        public static WrapPanel CardWp;
     }
 }
