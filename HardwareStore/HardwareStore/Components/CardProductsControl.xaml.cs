@@ -38,6 +38,7 @@ namespace HardwareStore.Components
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
             App.CardWp.Children.Remove(this);
+            App.productPage.Calc();
         }
 
         private void KolvoTb_TextChanged(object sender, TextChangedEventArgs e)
@@ -49,8 +50,10 @@ namespace HardwareStore.Components
             }
             else
             {
+                summ=0;
                 SummTb.Text = "";
             }
+            App.productPage.Calc();
         }
 
         private void KolvoTb_PreviewTextInput(object sender, TextCompositionEventArgs e)

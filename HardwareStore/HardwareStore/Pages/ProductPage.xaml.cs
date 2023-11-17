@@ -30,6 +30,7 @@ namespace HardwareStore.Pages
             var review = App.bd.Feedback.ToList();
             App.CardWp = CardWP;
             Refresh();
+            App.productPage = this;
             order = new Order();
         }
         private void Refresh()
@@ -110,7 +111,7 @@ namespace HardwareStore.Pages
                 sostav.Order_id = order.id;
                 sostav.Product_id = CardProd.product.Id;
                 sostav.product_qnt = CardProd.Kolvo;
-                
+                order.TotalCost = Convert.ToInt32(TotalCostTB.Text);
                 App.bd.Sostav.Add(sostav);
             }
             
@@ -135,14 +136,15 @@ namespace HardwareStore.Pages
             }
             return true;
         }
-        public void Calc()
-        {
+           public void Calc()
+           {
             double TotalCost=0;
             foreach(CardProductsControl card in CardWP.Children)
             {
                 TotalCost += Convert.ToDouble(card.summ);
             }
-        }
+            TotalCostTB.Text = TotalCost.ToString();
+           }
         
         private void ClearZakaz()
         {

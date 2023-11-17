@@ -65,7 +65,8 @@
         <ScrollViewer  Height="350" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" Grid.Row="1" Width="200" HorizontalAlignment="Right">
             <Border BorderBrush="Black" BorderThickness="2">
                 <StackPanel>
-                    <TextBlock Name="TotalCostTB"></TextBlock><TextBlock HorizontalAlignment="Center">Корзина</TextBlock>
+                    <TextBlock>Итого в корзине: </TextBlock>
+                    <TextBlock  Name="TotalCostTB"></TextBlock><TextBlock HorizontalAlignment="Center">Корзина</TextBlock>
                     
                     <WrapPanel Name="CardWP"></WrapPanel>
                     

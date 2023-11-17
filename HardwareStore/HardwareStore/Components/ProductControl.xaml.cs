@@ -56,7 +56,7 @@ namespace HardwareStore.Components
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             App.CardWp.Children.Add(new CardProductsControl(product));
-            
+            App.productPage.Calc();
 
         }
 

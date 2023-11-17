@@ -1,4 +1,5 @@
 ﻿using HardwareStore.Components;
+using HardwareStore.Pages;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -18,5 +19,6 @@ namespace HardwareStore
         public static HardwareStore322_shamaevEntities bd = new HardwareStore322_shamaevEntities();
         public static bool IsAdm = false;
         public static WrapPanel CardWp;
+        public static ProductPage productPage;
     }
 }

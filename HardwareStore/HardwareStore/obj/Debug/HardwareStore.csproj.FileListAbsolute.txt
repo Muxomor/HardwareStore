@@ -29,3 +29,5 @@ C:\Users\222127\source\repos\HardwareStore\HardwareStore\HardwareStore\obj\Debug
 C:\Users\222127\source\repos\HardwareStore\HardwareStore\HardwareStore\obj\Debug\Pages\AddOrRedactPage.baml
 C:\Users\222127\source\repos\HardwareStore\HardwareStore\HardwareStore\obj\Debug\Components\CardProductsControl.g.cs
 C:\Users\222127\source\repos\HardwareStore\HardwareStore\HardwareStore\obj\Debug\Components\CardProductsControl.baml
+C:\Users\222127\source\repos\HardwareStore\HardwareStore\HardwareStore\obj\Debug\Pages\OrderListPage.g.cs
+C:\Users\222127\source\repos\HardwareStore\HardwareStore\HardwareStore\obj\Debug\Pages\OrderListPage.baml
