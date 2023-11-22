@@ -17,6 +17,7 @@
         
         <Frame NavigationUIVisibility="Hidden" Name="MainFrame" Grid.Row="1" Grid.Column="2" Margin="0,0,0,0" />
         <StackPanel VerticalAlignment="Bottom" Grid.Row="1" >
+            <Button Visibility="Hidden" Name="OrderListBtn" Click="OrderListBtn_Click">Заказы</Button>
             <Button Margin="0 30" Name="BackBTn" Click="BackBTn_Click">Назад</Button>
             <PasswordBox Name="passTB"></PasswordBox>
             

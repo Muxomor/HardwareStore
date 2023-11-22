@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HardwareStore.Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,16 @@ namespace HardwareStore.Pages
         public OrderListPage()
         {
             InitializeComponent();
+            foreach(Order order in App.bd.Order)
+            {
+                OrdersWP.Children.Add(new OrderContentUserControl(order));
+            }
+
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

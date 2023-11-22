@@ -37,6 +37,7 @@ namespace HardwareStore
             {
                 App.IsAdm = true;
                 AdmExitBtn.Visibility = Visibility.Visible;
+                OrderListBtn.Visibility = Visibility.Visible;
                 Navigation.ClearHistory();
                 Navigation.NextPage(new PageComponents(new ProductPage()));
             }
@@ -46,6 +47,7 @@ namespace HardwareStore
         {
             App.IsAdm = false;
                 AdmExitBtn.Visibility = Visibility.Collapsed;
+                OrderListBtn.Visibility = Visibility.Hidden;
                 Navigation.BackPage();
                 passTB.Password = "";
                 Navigation.ClearHistory();
@@ -54,6 +56,11 @@ namespace HardwareStore
         private void BackBTn_Click(object sender, RoutedEventArgs e)
         {
             Navigation.BackPage();
+        }
+
+        private void OrderListBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Navigation.NextPage(new PageComponents(new OrderListPage()));
         }
 
 

@@ -68,6 +68,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Components\OrderContentUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Components\ProductControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -104,6 +108,9 @@
     <Compile Include="Components\Navigation.cs" />
     <Compile Include="Components\Order.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Components\OrderContentUserControl.xaml.cs">
+      <DependentUpon>OrderContentUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\PartialClass\Product.cs" />
     <Compile Include="Components\Product.cs">

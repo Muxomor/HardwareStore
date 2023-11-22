@@ -17,22 +17,9 @@
                     <ComboBoxItem>Не выполнен</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
-            <StackPanel Margin="580 20 0 0">
-                <Button Name="BackBtn" Height="20" Width="80">Back</Button>
-            </StackPanel>
-
         </StackPanel>
-        <ListView Margin="0 50 0 0" Name="OrderListLV">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Order.OrderId}" Width="50" Header="OrderId"></GridViewColumn>
-                    <GridViewColumn Header="OrderDate" DisplayMemberBinding="{Binding Order.data}"></GridViewColumn>
-                    <GridViewColumn Header="Order Status" DisplayMemberBinding="{Binding Order.status}"></GridViewColumn>
-                    <GridViewColumn Width="100" Header="Sostav"></GridViewColumn>
-                    <GridViewColumn Width="70" DisplayMemberBinding="{Binding Order.TotalCost}" Header="TotalCost"></GridViewColumn>
-                    <GridViewColumn></GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <ScrollViewer Height="370" Margin="0 70">
+            <WrapPanel Name="OrdersWP"></WrapPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
